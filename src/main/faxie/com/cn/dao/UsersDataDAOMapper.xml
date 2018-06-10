@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cn.dao.UsersDataDAO">
+    <sql id="list">
+        id,Name,RegisteredTime,Sex,Age,Hobbies,Address,UserID
+    </sql>
+    
+    <insert id="addUsersData" parameterType="com.cn.bean.UsersData">
+        insert into UserData values(null,#{Name},#{RegisteredTime},#{Sex},#{Age},#{Hobbies},#{Address},#{UserID});
+    </insert>
+    
+    <select id="selectUserData" parameterType="int" resultType="UsersData">
+    	select <include refid="list"/>
+    	from UserData
+    	where UserID=#{id,jdbcType=INTEGER}
+    </select>
+    
+    
+</mapper>

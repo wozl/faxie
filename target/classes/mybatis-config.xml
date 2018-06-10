@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>  
+        <!-- 打印查询语句 -->  
+        <setting name="logImpl" value="STDOUT_LOGGING" />  
+    </settings>
+
+
+
+    <typeAliases>
+        <typeAlias type="com.cn.bean.Users" alias="Users"/>
+        <typeAlias type="com.cn.bean.UsersData" alias="UsersData"/>
+        <typeAlias type="com.cn.bean.UsersDiary" alias="UsersDiary"/>
+        <typeAlias type="com.cn.bean.UsersDynamic" alias="UsersDynamic"/>
+        <typeAlias type="com.cn.bean.Dynamic" alias="Dynamic"/>
+        <typeAlias type="com.cn.bean.Post_Article" alias="Post_Article"/>
+    </typeAliases>
+    
+    <mappers>
+        <mapper class="com.cn.dao.UsersDAO"/>
+        <mapper class="com.cn.dao.UsersDataDAO" />
+        <mapper class="com.cn.dao.UsersDiaryDAO"/>
+        <mapper class="com.cn.dao.UsersDynamicDAO"/>
+        <mapper class="com.cn.dao.DynamicDAO"/>
+        <mapper class="com.cn.dao.Post_ArticleDAO"/>
+    </mappers>
+</configuration>

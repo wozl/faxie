@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.dao.UsersDiaryDAO">
+	<sql id="list">
+		id,Title,Content,WriteTime,UserDiary
+	</sql>
+	
+	<select id="selectTitle" parameterType="int" resultType="UsersDiary">
+		select <include refid="list"/>
+			from Diary where UserDiary=#{UserDiary,jdbcType=INTEGER};
+	</select>
+
+	<select id="selectDiaryData" parameterType="string" resultType="UsersDiary">
+		select <include refid="list"/>
+		from Diary where Title=#{Title,jdbcType=VARCHAR};
+	</select>
+
+	<insert id="addDiary" parameterType="com.cn.bean.UsersDiary">
+			insert into Diary values(null,#{Title},#{Content},#{WriteTime},#{UserDiary});
+	</insert>
+
+	<select id="selectcontent" parameterType="com.cn.bean.UsersDiary" resultType="UsersDiary">
+		select <include refid="list"/>
+		from Diary where UserDiary=#{UserDiary,jdbcType=INTEGER} and WriteTime=#{WriteTime,jdbcType=VARCHAR};
+	</select>
+
+</mapper>

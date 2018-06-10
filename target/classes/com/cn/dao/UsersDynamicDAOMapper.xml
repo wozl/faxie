@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.cn.dao.UsersDynamicDAO">
+	<select id="getall" resultType="UsersDynamic">
+			SELECT id,UserName,Did,Content,SubmitTime FROM users,Dynamic WHERE users.`id`=Dynamic.`UsersId` GROUP BY SubmitTime DESC;
+	</select>
+	
+</mapper>

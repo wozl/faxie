@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.dao.Post_ArticleDAO">
+	<sql id="list">
+		Aid,Article_title,Article_content,Issuing_time,Love,Posted_by
+	</sql>
+	<select id="ArticleList"  resultType="Post_Article">
+		select <include refid="list"></include> from Article GROUP BY Issuing_time DESC;
+	</select>
+	<insert id="InsertArticle">
+		insert into Article values(null,#{Article_title},#{Article_content},#{Issuing_time},#{Love},DEFAULT);
+	</insert>
+	
+	<delete id="DeleteArticle" parameterType="int">
+		delete from Article where Aid=#{id}
+	</delete>
+</mapper>
